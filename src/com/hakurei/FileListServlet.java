@@ -1,4 +1,4 @@
-package MainPage;
+package com.hakurei;
 
 import net.sf.json.JSONArray;
 
@@ -20,22 +20,24 @@ public class FileListServlet extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.print("bbb");
+
         doGet(request,response);
 
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uesr=(String)request.getSession().getAttribute("user");
+        System.out.print("fileList");
         List user_list =new ArrayList<FileList>();
         for (int i=0;i<DataManage.fileData.getList().size();i++)
         {
-            if (uesr.equals(DataManage.fileData.getList().get(i).getUpLoader()))
+            if (uesr.equals(DataManage.fileData.getList().get(i).getUploader()))
                 user_list.add(DataManage.fileData.getList().get(i));
         }
         String str= "{\"code\": 0,\"msg\": \"\",\"count\": 1000,\"data\":";
         str+=JSONArray.fromObject(user_list);
         str+="}";
+        response.setCharacterEncoding("UTF-8");
         response.getWriter().print(str);
 
 

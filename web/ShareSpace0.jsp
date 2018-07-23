@@ -11,6 +11,7 @@
   <meta charset="UTF-8">
   <script src="../layui/layui.js"></script>
   <script src="LoginSystem.js"></script>
+  <script src="jquery-3.3.1.js"></script>
   <!--script src="../layui/index.js"></script-->
   <link rel="stylesheet" href="../layui/css/layui.css">
   <link rel="stylesheet" type="text/css" href="loungh_1.css">

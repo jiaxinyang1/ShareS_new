@@ -1,6 +1,4 @@
-package MainPage;
-
-import Bean.UserBean;
+package com.hakurei;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

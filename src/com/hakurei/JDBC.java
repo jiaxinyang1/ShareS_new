@@ -1,4 +1,4 @@
-package MainPage;
+package com.hakurei;
 
 import java.sql.*;
 

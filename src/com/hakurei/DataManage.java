@@ -1,8 +1,9 @@
-package MainPage;
+package com.hakurei;
 
 public class DataManage {
     public static JDBCReflection<User> userData;
     public static JDBCReflection<FileList> fileData;
+
 
     public DataManage()
     {

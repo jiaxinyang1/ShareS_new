@@ -5,7 +5,7 @@
          version="4.0">
     <servlet>
         <servlet-name>RServlet</servlet-name>
-        <servlet-class>MainPage.RegisterServlet</servlet-class>
+        <servlet-class>com.hakurei.RegisterServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RServlet</servlet-name>
@@ -13,7 +13,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>LServlet</servlet-name>
-        <servlet-class>MainPage.LoginServlet</servlet-class>
+        <servlet-class>com.hakurei.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LServlet</servlet-name>
@@ -21,7 +21,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>GroupSpaceServlet</servlet-name>
-        <servlet-class>MainPage.GroupSpaceServlet</servlet-class>
+        <servlet-class>com.hakurei.GroupSpaceServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>GroupSpaceServlet</servlet-name>
@@ -29,7 +29,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>MySpaceServlet</servlet-name>
-        <servlet-class>MainPage.MySpaceServlet</servlet-class>
+        <servlet-class>com.hakurei.MySpaceServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MySpaceServlet</servlet-name>
@@ -37,7 +37,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>ShareSpace0Servlet</servlet-name>
-        <servlet-class>MainPage.ShareSpace0Servlet</servlet-class>
+        <servlet-class>com.hakurei.ShareSpace0Servlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ShareSpace0Servlet</servlet-name>
@@ -45,7 +45,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>LoginOutServlet</servlet-name>
-        <servlet-class>MainPage.LoginOutServlet</servlet-class>
+        <servlet-class>com.hakurei.LoginOutServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginOutServlet</servlet-name>
@@ -53,10 +53,18 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>fileListServlet</servlet-name>
-        <servlet-class>MainPage.FileListServlet</servlet-class>
+        <servlet-class>com.hakurei.FileListServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>fileListServlet</servlet-name>
         <url-pattern>/data</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>uploadServlet</servlet-name>
+        <servlet-class>com.hakurei.UploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>uploadServlet</servlet-name>
+        <url-pattern>/upload</url-pattern>
     </servlet-mapping>
 </web-app>

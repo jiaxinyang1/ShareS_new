@@ -1,4 +1,4 @@
-package MainPage;
+package com.hakurei;
 
 import java.util.Objects;
 
@@ -9,14 +9,14 @@ public class FileList {
     private String uploadTime;
     private int    authority;
     private String fileURL;
-    private String upLoader;
+    private String uploader;
 
-    public String getUpLoader() {
-        return upLoader;
+    public String getUploader() {
+        return uploader;
     }
 
-    public void setUpLoader(String upLoader) {
-        this.upLoader = upLoader;
+    public void setUploader(String uploader) {
+        this.uploader = uploader;
     }
 
     public String getFileNo() {
