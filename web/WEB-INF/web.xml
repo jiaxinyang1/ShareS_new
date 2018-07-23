@@ -67,4 +67,20 @@
         <servlet-name>uploadServlet</servlet-name>
         <url-pattern>/upload</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>myGroupSerlvet</servlet-name>
+        <servlet-class>com.hakurei.MyGroupServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>myGroupSerlvet</servlet-name>
+        <url-pattern>/myGroup</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>createGroupServlet</servlet-name>
+        <servlet-class>com.hakurei.CreateGroupServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>createGroupServlet</servlet-name>
+        <url-pattern>/createGroup</url-pattern>
+    </servlet-mapping>
 </web-app>

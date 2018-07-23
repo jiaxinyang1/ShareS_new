@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <script src="../layui/layui.js"></script>
-    <script src="LoginSystem.js"></script>
+    <!--script src="LoginSystem.js"></script-->
     <script src="GroupSpace.js"></script>
+    <script SRC="jquery-3.3.1.js"></script>
     <!--script src="../layui/index.js"></script-->
     <link rel="stylesheet" href="../layui/css/layui.css">
     <link rel="stylesheet" href="loungh_3.css">
@@ -23,7 +24,7 @@
         // String strURL = request.getParameter("first");
         String password = (String)session.getAttribute("password");
         // String strSession = (String)request.getSession().getAttribute("strSession");
-        String username=(String)session.getAttribute("username");
+        String username=(String)session.getAttribute("user");
     %>
 
     <div class="layui-header ">
@@ -92,7 +93,9 @@
                     <img src="../picture/userimg.jpg" height="80px" width="80px" alt="use image">
                 </div>
                 <div class="leftdiv">
-                    <button class="layui-btn layui-btn-radius layui-btn-danger">创建群组</button>
+                    <div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
+                        <button data-method="offset" data-type="auto" class="layui-btn layui-btn-radius layui-btn-danger">创建群组?</button>
+                    </div>
                 </div>
             </div>
         </div>

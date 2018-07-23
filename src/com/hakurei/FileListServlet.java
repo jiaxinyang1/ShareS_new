@@ -27,7 +27,6 @@ public class FileListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uesr=(String)request.getSession().getAttribute("user");
-        System.out.print("fileList");
         List user_list =new ArrayList<FileList>();
         for (int i=0;i<DataManage.fileData.getList().size();i++)
         {

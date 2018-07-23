@@ -85,7 +85,9 @@ public class JDBCReflection<T> {
         }
         sql+=values.get(values.size()-1);
         sql+=")";
+        System.out.println("sql语句是:"+sql);
         jdbc.update(sql);
+        values.clear();
     }
     public void Delete(T data){
         if (list.contains(data))

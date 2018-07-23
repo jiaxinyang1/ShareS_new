@@ -2,26 +2,82 @@ layui.use(['layer','form'],function () {
       var $=layui.jquery,
           layer=layui.layer,
           form=layui.form;
+    function register(){
 
+        layer.open({
+            type: 1
+            ,offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+            ,id: 'layerDemoRe' //防止重复弹出
+            ,content: '<form class="layui-form" action="/nmsl" method="get"> ' +
+            ' <div class="layui-form-item">\n' +
+            '    <label class="layui-form-label">Email</label>\n' +
+            '    <div class="layui-input-inline">\n' +
+            '      <input type="text" name="email" lay-verify="email" placeholder="请输入邮箱" autocomplete="off" class="layui-input">\n' +
+            '    </div>\n' +
+            '  </div>'+
+            ' <div class="layui-form-item">\n' +
+            '    <label class="layui-form-label">用户名</label>\n' +
+            '    <div class="layui-input-inline">\n' +
+            '      <input type="text" name="username" lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">\n' +
+            '    </div>\n' +
+            '  </div>'+
+            ' <div class="layui-form-item">\n' +
+            '    <label class="layui-form-label">密码</label>\n' +
+            '    <div class="layui-input-inline">\n' +
+            '      <input type="password" name="password" lay-verify="pass" placeholder="请输入密码,6-12位" autocomplete="off" class="layui-input">\n' +
+            '    </div>\n' +
+            '  </div>'+
+            ' <div class="layui-form-item">\n' +
+            '    <label class="layui-form-label">确认密码</label>\n' +
+            '    <div class="layui-input-inline">\n' +
+            '      <input type="password" name="pass2" lay-verify="pass" placeholder="再次输入密码" autocomplete="off" class="layui-input">\n' +
+            '    </div>\n' +
+            '  </div>'+
+            ' <div class="layui-form-item">\n' +
+            '    <label class="layui-form-label">手机号</label>\n' +
+            '    <div class="layui-input-inline">\n' +
+            '      <input type="tel" name="phone" lay-verify="required|phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">\n' +
+            '    </div>\n' +
+            '  </div>'+
+            ' <div class="layui-form-item">\n' +
+            '    <div class="layui-input-block">\n' +
+            '      <button class="layui-btn layui-btn-normal" lay-submit="" lay-filter="demo">立即提交</button>\n' +
+            '      <button type="reset" class="layui-btn layui-btn-primary">重置</button>\n' +
+            '    </div>\n' +
+            '  </div>'+
+            '</form> '
+            ,title:'注册'
+            ,area:['400px','460px']
+            // ,btn:['注册','重置']
+            //  ,btnAlign: 'c' //按钮居中
+            ,shade: 0 //不显示遮罩
 
+        })
+    }
+    form.verify({
+        pass: [/(.+){6,12}$/, '密码必须6到12位']
+        ,content: function(value){
+            layedit.sync(editIndex);
+        }
+    });
 
     form.on('submit(demo1)', function(data){
      /*   layer.alert(JSON.stringify(data.field), {
             title: '最终的提交信息'
         })
         */
-
-
         return true;
     });//登录表单验证
-
-    form.on('submit(demo2)', function(data){
+    form.on('submit(demo)', function(data){
         /*   layer.alert(JSON.stringify(data.field), {
                title: '最终的提交信息'
            })
            */
-
-        return true;
+       if(data.field.password!=data.field.pass2) {
+           layer.msg("密码不一致");
+           return false;
+       }
+       else return true;
     });//注册表单验证
     var active={
         offset:function(othis){
@@ -44,13 +100,6 @@ layer.open({
     '      <input type="password" name="password" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input">\n' +
     '    </div>\n' +
     '  </div>'+
-        '<div class="layui-form-item">\n' +
-    '            <label class="layui-form-label">验证码：</label>\n' +
-    '\n' +
-    '            <div class="layui-input-inline">\n' +
-    '                <input type="number" name="code" class="layui-input" lay-verify="code" placeholder="验证码" maxlength="4"/><img src="img/v.png" onclick="getImage()" title="单击刷新验证码" id="img_rand_code" alt="">\n' +
-    '            </div>\n' +
-    '        </div>'+
     ' <div class="layui-form-item">\n' +
     '    <div class="layui-input-block">\n' +
     '      <button class="layui-btn layui-btn-normal" lay-submit="" lay-filter="demo1">登录</button>\n' +
@@ -62,65 +111,10 @@ layer.open({
     ,btn: '没有账号?点此注册'
     ,btnAlign: 'c' //按钮居中
     ,shade: 0 //不显示遮罩
-    ,yes:function(){
-         layer.open({
-             type: 1
-             ,offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
-             ,id: 'layerDemoRe'+type //防止重复弹出
-             ,content: '<form class="layui-form" action="/nmsl" method="get"> ' +
-             ' <div class="layui-form-item">\n' +
-             '    <label class="layui-form-label">Email</label>\n' +
-             '    <div class="layui-input-inline">\n' +
-             '      <input type="text" name="email" lay-verify="email" placeholder="请输入邮箱" autocomplete="off" class="layui-input">\n' +
-             '    </div>\n' +
-             '  </div>'+
-             ' <div class="layui-form-item">\n' +
-             '    <label class="layui-form-label">用户名</label>\n' +
-             '    <div class="layui-input-inline">\n' +
-             '      <input type="text" name="username" lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">\n' +
-             '    </div>\n' +
-             '  </div>'+
-             ' <div class="layui-form-item">\n' +
-             '    <label class="layui-form-label">密码</label>\n' +
-             '    <div class="layui-input-inline">\n' +
-             '      <input type="password" name="password" lay-verify="required" placeholder="请输入密码,16位" autocomplete="off" class="layui-input">\n' +
-             '    </div>\n' +
-             '  </div>'+
-             ' <div class="layui-form-item">\n' +
-             '    <label class="layui-form-label">确认密码</label>\n' +
-             '    <div class="layui-input-inline">\n' +
-             '      <input type="password" name="password2" lay-verify="required" placeholder="再次输入密码" autocomplete="off" class="layui-input">\n' +
-             '    </div>\n' +
-             '  </div>'+
-             ' <div class="layui-form-item">\n' +
-             '    <label class="layui-form-label">手机号</label>\n' +
-             '    <div class="layui-input-inline">\n' +
-             '      <input type="tel" name="phone" lay-verify="required|phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">\n' +
-             '    </div>\n' +
-             '  </div>'+
-             '<div class="layui-form-item">\n' +
-             '            <label class="layui-form-label">验证码：</label>\n' +
-             '\n' +
-             '            <div class="layui-input-inline">\n' +
-             '                <input type="number" name="code" class="layui-input" lay-verify="code" placeholder="验证码" maxlength="4"/><img src="img/v.png" onclick="getImage()" title="单击刷新验证码" id="img_rand_code" alt="">\n' +
-             '            </div>\n' +
-             '        </div>'+
-             ' <div class="layui-form-item">\n' +
-             '    <div class="layui-input-block">\n' +
-             '      <button class="layui-btn layui-btn-normal" lay-submit="" lay-filter="demo2">立即提交</button>\n' +
-             '      <button type="reset" class="layui-btn layui-btn-primary">重置</button>\n' +
-             '    </div>\n' +
-             '  </div>'+
-             '</form> '
-             ,title:'注册'
-             ,area:['400px','460px']
-             // ,btn:['注册','重置']
-             //  ,btnAlign: 'c' //按钮居中
-             ,shade: 0 //不显示遮罩
-
-         })
-     }
-
+    ,yes:function () {
+        register();
+        console.log("register");
+    }
 });
     }
 
@@ -133,13 +127,12 @@ layer.open({
 
 
 function a() {
-    var inf=document.getElementById("login-infor").innerHTML;
+    var inf=document.getElementById("login-infor");
 
-    if(inf){
-        console.log(inf);
+    if(inf.innerHTML!="null"){
+        console.log(inf.innerHTML);
        // console.log("aaa");
-       layer.msg(inf);
+       layer.msg(inf.innerHTML);
     }
-    else
-        layer.msg("请登录");
 }
+
