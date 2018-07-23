@@ -1,0 +1,44 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2018-07-19 15:29:21
+ * @version $Id$
+ */
+.div0{
+	margin: auto;
+	text-align: center;
+	clear: both;
+	width: 1920px;
+	height: 680px;
+	background:url(./picture/down.jpg);
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+#left{
+	padding-top: 50px;
+	float: left;
+	margin-left: 150px;
+}
+#leftbottom{
+	height: 250px;
+	width: 250px;
+	margin-top: 50px;
+	background-color: white;
+}
+.leftdiv{
+	padding-top: 40px;
+}
+#mid{
+	float: left;
+	padding-top: 40px;
+	padding-left: 250px;
+}
+.table{
+	background-color: white;
+}
+#right{
+	float: left;
+	padding-top: 40px;
+    padding-left: 250px;
+}

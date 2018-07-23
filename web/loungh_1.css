@@ -1,0 +1,36 @@
+@charset "UTF-8";
+#div0{
+	margin: auto;
+	text-align: center;
+	clear: both;
+	width: 1920px;
+	height: 680px;
+	background:url(bg.jpg);
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+#div1{
+	margin: auto;
+	text-align: center;
+	clear: both;
+	width: 1000px;
+	margin-left: 120px;
+}
+#div1,#div2{
+	margin-bottom: 10px;
+	margin-top: 10px;
+	float: left;
+	padding-top: 150px;
+}
+p{
+	color: #262641;
+	margin: auto;
+	text-align: center;
+	clear: both;
+	float: left;
+    padding-top: 150px;
+	margin-left: 540px;
+	font-size: 70px;
+	text-shadow: 100px 40px 0px #B3B3B3;
+	filter:shadow(Color=#0000ff,Direction=10,Strength=10)
+}

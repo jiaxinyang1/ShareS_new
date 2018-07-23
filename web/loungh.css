@@ -1,0 +1,63 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2018-07-17 18:32:23
+ * @version $Id$
+ */
+
+h1,p{
+	text-align: center;
+	vertical-align:middle;
+}
+#p1{
+	display: table-cell;
+	text-align: center;
+	vertical-align:middle;
+}
+#div1,.div2{
+	border-width: 1px;
+	border-style: solid;
+	border-color: #EEEEEE;
+	height: 233px;
+	width: 400px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	float: left;
+}
+#div0{
+	margin: auto;
+	text-align: center;
+	clear: both;
+	width: 1266px
+
+}
+
+.div2{
+	
+    margin-left: 30px;
+}
+#div3{
+	margin: auto;
+	text-align: center;
+	clear: both;
+	width: 1480px;
+	height: 386px;
+	background:url(./picture/down.jpg);
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+#div4{
+	padding-top: 80px;
+
+}
+#div5{
+	padding-top: 40px;
+	padding-bottom: 30px;
+}
+#div4,#div5,#div6{
+	margin: auto;
+	text-align: center;
+	clear: both;
+}
+
