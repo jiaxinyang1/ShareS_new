@@ -71,9 +71,11 @@ public class JDBCReflection<T> {
     }
     public void Insert(T data)
     {
+        System.out.println("在插入之前的valuse值是"+values);
+
         if (isReapt(data))
         {
-            System.out.print("重复了");
+            System.out.println("重复了");
             return;
         }
         list.add(data);
@@ -81,6 +83,7 @@ public class JDBCReflection<T> {
         String sql ="INSERT INTO "+className+" values(";
         for (int i=0;i<values.size()-1;i++)
         {
+
             sql+=values.get(i)+",";
         }
         sql+=values.get(values.size()-1);
@@ -88,6 +91,7 @@ public class JDBCReflection<T> {
         System.out.println("sql语句是:"+sql);
         jdbc.update(sql);
         values.clear();
+        System.out.println("清楚之后valuse值是"+values);
     }
     public void Delete(T data){
         if (list.contains(data))

@@ -1,18 +1,18 @@
 package com.hakurei;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONObject;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -47,6 +47,8 @@ public class UploadServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
+
         //检测是否为多媒体上传
         if(!ServletFileUpload.isMultipartContent(request)) {
             //如果不是则停止
@@ -75,8 +77,6 @@ public class UploadServlet extends HttpServlet {
         //中文处理
         upload.setHeaderEncoding("UTF-8");
         String username=(String)request.getSession().getAttribute("user");
-        System.out.print(username);
-
         //构造临时路径来存储上传的文件
         //这个路径相对于当前应用的目录
         //String uploadpath = request.getServletContext().getRealPath("./")+File.separator+UPLOAD_DIRECTORY;
@@ -91,41 +91,52 @@ public class UploadServlet extends HttpServlet {
         try {
             //解析请求内容，提取文件数据
             //@SuppressWarnings("unchecked")
-            List<FileItem> formItem = upload.parseRequest(request);
 
+            List<FileItem> formItem = upload.parseRequest(request);
+            FileList newFile;
+            String fileName=null;
             if(formItem !=null&&formItem.size()>0) {
                 //迭代表单数据
                 for(FileItem item :formItem) {
                     //处理不在表单中的字段
                     if(!item.isFormField()) {
-                        String fileName = new File(item.getName()).getName();
+                        File fileBuffer= new File(item.getName());
+                        fileName =fileBuffer.getName();
                         String filePath = uploadpath + File.separator + fileName;
                         File storeFile = new File(filePath);
                         //在控制台输出文件上传的路径
-                        System.out.println(fileName);
+                     //   System.out.println(fileName);
                         //保存文件到硬盘
                         item.write(storeFile);
-                        FileList newFile =new FileList();
-                        newFile.setFileName(fileName);
-                        newFile.setFileSize("1");
-                        newFile.setUploadTime(getNowDateShort());
-                        newFile.setFileNo(String.valueOf(DataManage.fileData.getList().size()+1));
-                        newFile.setFileURL("D:/upload/"+username+"/"+fileName);
-                        newFile.setUploader(username);
-                        newFile.setAuthority(1);
-                        DataManage.fileData.Insert(newFile);
-                        request.setAttribute("message", "文件上传成功");
-                        DataManage.fileData.getList().clear();
-                        DataManage.fileData.Find();
-                        request.getRequestDispatcher("MySpace.jsp").forward(request, response);
+
                     }
+                    newFile=new FileList();
+                    newFile.setFileName(fileName);
+                    newFile.setFileSize("1");
+                    newFile.setUploadTime(getNowDateShort());
+                    //生产唯一编号
+                    String groupId = String.format("%07d", Math.abs(UUID.randomUUID().toString().hashCode()));
+                    newFile.setFileNo(groupId);
+                    newFile.setFileURL("D:/upload/"+username+"/");
+                    newFile.setUploader(username);
+                    newFile.setAuthority(1);
+                    DataManage.fileData.Insert(newFile);
+                    request.setAttribute("message", "文件上传成功");
                 }
             }
+
         }catch(Exception ex) {
            // request.setAttribute("message", "错误信息"+ex.getMessage());
             System.out.println(ex.getMessage());
         }
-
+        String str= "{\"code\": 0,\"msg\": \"\",\"data\": {}}";
+        response.setHeader("Content-Type","application/json");
+        response.setCharacterEncoding("utf-8");
+        PrintWriter out = response.getWriter();
+        out.print(str);
+        out.flush();
+        out.close();
+        request.getRequestDispatcher("MySpace.jsp").forward(request, response);
     }
     public String getNowDateShort() {
         Date currentTime = new Date();
@@ -133,5 +144,6 @@ public class UploadServlet extends HttpServlet {
         String dateString = formatter.format(currentTime);
 
         return dateString;
+
     }
 }

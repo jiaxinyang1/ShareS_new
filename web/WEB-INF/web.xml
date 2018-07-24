@@ -83,4 +83,28 @@
         <servlet-name>createGroupServlet</servlet-name>
         <url-pattern>/createGroup</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>downLoadServlet</servlet-name>
+        <servlet-class>com.hakurei.Download</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>downLoadServlet</servlet-name>
+        <url-pattern>/download</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>deleteServlet</servlet-name>
+        <servlet-class>com.hakurei.DeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteServlet</servlet-name>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>searchServlet</servlet-name>
+        <servlet-class>com.hakurei.SearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>searchServlet</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
 </web-app>

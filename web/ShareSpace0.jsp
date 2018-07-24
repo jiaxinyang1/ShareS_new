@@ -11,6 +11,7 @@
   <meta charset="UTF-8">
   <script src="../layui/layui.js"></script>
   <script src="LoginSystem.js"></script>
+<script src="search.js"></script>
   <script src="jquery-3.3.1.js"></script>
   <!--script src="../layui/index.js"></script-->
   <link rel="stylesheet" href="../layui/css/layui.css">
@@ -54,22 +55,40 @@ String login=(String) session.getAttribute("login");
   </div>
 
   <div id="div0">
-    <div class="layui-anim layui-anim-scale">
-      <p>Share Space</p>
-    </div>
-    <div class="layui-anim layui-anim-up">
-      <div class="layui-form-item">
-        <div class="layui-input-block">
+    <div id="top">
+      <div class="layui-anim layui-anim-scale">
+        <p>Share Space</p>
+      </div>
+      <div class="layui-anim layui-anim-upbit">
+        <form class="layui-form" action="">
           <div id="div1">
-            <input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input">
+            <div class="layui-form-item">
+              <div class="layui-input-block">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入文件名" class="layui-input">
+              </div>
+            </div>
           </div>
           <div id="div2">
-            <input type="image" src="search.jpg" name="image" height="38px">
+            <div class="layui-form-item">
+              <div class="layui-input-block">
+                <button class="layui-btn" lay-submit="" lay-filter="search">搜索</button>
+              </div>
+            </div>
           </div>
+        </form>
+      </div>
+    </div>
+    <div class="layui-anim layui-anim-upbit">
+      <div id="test">
+        <div id="table2">
+          <table lay-filter="test"></table>
+
         </div>
       </div>
     </div>
   </div>
+
+
 </div>
 </body>
 

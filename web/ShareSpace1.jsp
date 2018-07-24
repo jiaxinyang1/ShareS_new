@@ -25,7 +25,6 @@
 
 </script>
 <%
-    String password = (String) session.getAttribute("password");
     String username=(String)session.getAttribute("user");
 %>
 <div class="layui-layout layui-layout-admin ">

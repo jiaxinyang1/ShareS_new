@@ -33,9 +33,10 @@ public class FileListServlet extends HttpServlet {
             if (uesr.equals(DataManage.fileData.getList().get(i).getUploader()))
                 user_list.add(DataManage.fileData.getList().get(i));
         }
-        String str= "{\"code\": 0,\"msg\": \"\",\"count\": 1000,\"data\":";
+        String str= "{\"code\": 0,\"msg\": \"\",\"count\":"+user_list.size()+",\"limit\":10"+",\"data\":";
         str+=JSONArray.fromObject(user_list);
         str+="}";
+        System.out.println(str);
         response.setCharacterEncoding("UTF-8");
         response.getWriter().print(str);
 

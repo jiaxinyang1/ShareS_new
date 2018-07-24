@@ -7,6 +7,7 @@
     <script src="LoginSystem.js"></script>
     <script src="MySpace.js"></script>
     <script src="jquery-3.3.1.js"></script>
+    <script src="upload.js"></script>
     <!--script src="../layui/index.js"></script-->
     <link rel="stylesheet" href="../layui/css/layui.css">
     <link rel="stylesheet" href="loungh_2.css">
@@ -39,25 +40,9 @@
         %>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
-                <button id="test2" class="layui-btn layui-btn-radius">
+                <button id="test_2"  data-method="upload" data-type="auto" class="layui-btn layui-btn-radius">
                     上传<i class="layui-icon">&#xe67c;</i>
                 </button>
-                <script type="text/javascript">
-                    $('#test2').on('click', function(){
-                        layer.open({
-                            type: 1,
-                            title: '上传',
-                            area: ['600px', '360px'],
-                            shadeClose: true, //点击遮罩关闭
-                            content: '<form method="post" action="/upload" enctype="multipart/form-data">'+
-                            '选择一个文件：'+
-                            '<input type="file" name="uploadFile"/>'+
-                            '  <br/><br/>'+
-                            ' <input type="submit" value="上传"/>'+
-                            ' </form>'
-                        });
-                    });
-                </script>
             </li>
             <li class="layui-nav-item">
                  <a href="javascript:;">
@@ -103,17 +88,15 @@
         </div>
     </div>
     <div class="layui-anim layui-anim-fadein">
-        <div class="layui-main" >
+        <div style="background: white" class="layui-main" >
 
 
          <div class="layui-btn-group demoTable">
-         <button class="layui-btn" data-type="">待定</button>
-
         </div>
-         <table lay-filter="test" id="user"></table>
+         <table lay-filter="test" id="user"  ></table>
          <script type="text/html" id="barDemo">
              <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
-             <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+             <a class="layui-btn layui-btn-xs" lay-event="download">下载</a>
              <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
          </script>
          </div>
