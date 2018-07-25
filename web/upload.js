@@ -139,7 +139,11 @@ layui.use(['layer','upload','table'], function(){
 
                     var checkStatus = table.checkStatus('myspaceingroup')
                         ,data = checkStatus.data;
-                    window.location.href="/uploadtogroup?file_data="+data[0].fileNo;
+                    layer.msg(JSON.stringify(data));
+                    var post={data:JSON.stringify(data)};
+                    $.post("/uploadtogroup",post,function f() {
+
+                    });
 
 
             }
