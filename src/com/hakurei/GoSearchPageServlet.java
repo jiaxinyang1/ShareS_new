@@ -7,25 +7,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class DeleteServlet extends HttpServlet {
+public class GoSearchPageServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        // TODO Auto-generated method stub
-        String fileNumber =(String) request.getParameter("fileNumber");
-        System.out.println(fileNumber);
+        String name = (String) request.getSession().getAttribute("user");
+        String search_content=request.getParameter("title");
+        request.getSession().setAttribute("title",search_content);
 
-        for (int i=0;i<DataManage.fileData.getList().size();i++)
+
+        if (name!=null)
         {
-            if (fileNumber.equals(DataManage.fileData.getList().get(i).getFileNo()))
-            {
-                DataManage.fileData.Delete(DataManage.fileData.getList().get(i));
-
-            }
+            request.getRequestDispatcher("ShareSpace1.1.jsp").forward(request,response);
         }
-        request.getRequestDispatcher("MySpace.jsp").forward(request,response);
+        else
+         request.getRequestDispatcher("ShareSpace0.1.jsp").forward(request,response);
+
     }
 }

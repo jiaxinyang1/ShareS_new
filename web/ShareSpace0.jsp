@@ -11,9 +11,9 @@
   <meta charset="UTF-8">
   <script src="../layui/layui.js"></script>
   <script src="LoginSystem.js"></script>
-<script src="search.js"></script>
   <script src="jquery-3.3.1.js"></script>
   <!--script src="../layui/index.js"></script-->
+  <script src="search0.js"></script>
   <link rel="stylesheet" href="../layui/css/layui.css">
   <link rel="stylesheet" type="text/css" href="loungh_1.css">
   <title>ShareSpace</title>
@@ -29,10 +29,8 @@
 String login=(String) session.getAttribute("login");
 
 %>
-
-
 <div class="layui-layout layui-layout-admin ">
-  <p  style="visibility:hidden" id="login-infor">   <%=login%>   </p>
+
   <div class="layui-header  ">
     <!--div class="layui-logo layui-bg-blue">Space</div-->
     <ul class="layui-nav layui-layout-left ">
@@ -55,16 +53,18 @@ String login=(String) session.getAttribute("login");
   </div>
 
   <div id="div0">
+    <div class="layui-anim layui-anim-fadein">
     <div id="top">
       <div class="layui-anim layui-anim-scale">
         <p>Share Space</p>
       </div>
       <div class="layui-anim layui-anim-upbit">
-        <form class="layui-form" action="">
+        <form class="layui-form" action="GoSearchPageServlet">
           <div id="div1">
             <div class="layui-form-item">
               <div class="layui-input-block">
                 <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入文件名" class="layui-input">
+                <p  style="visibility:hidden" id="login-infor">   <%=login%>   </p>
               </div>
             </div>
           </div>
@@ -78,13 +78,6 @@ String login=(String) session.getAttribute("login");
         </form>
       </div>
     </div>
-    <div class="layui-anim layui-anim-upbit">
-      <div id="test">
-        <div id="table2">
-          <table lay-filter="test"></table>
-
-        </div>
-      </div>
     </div>
   </div>
 

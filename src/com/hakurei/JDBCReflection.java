@@ -71,7 +71,6 @@ public class JDBCReflection<T> {
     }
     public void Insert(T data)
     {
-        System.out.println("在插入之前的valuse值是"+values);
 
         if (isReapt(data))
         {
@@ -88,10 +87,8 @@ public class JDBCReflection<T> {
         }
         sql+=values.get(values.size()-1);
         sql+=")";
-        System.out.println("sql语句是:"+sql);
         jdbc.update(sql);
         values.clear();
-        System.out.println("清楚之后valuse值是"+values);
     }
     public void Delete(T data){
         if (list.contains(data))
@@ -100,12 +97,20 @@ public class JDBCReflection<T> {
         }
         else throw new NullPointerException();
         String sql="DELETE from "+className+" where ";
+        try {
         String f=field.get(0);
         sql+=f+"='";
         String m=f.substring(0,1).toUpperCase()+f.substring(1);
         m="get"+m;
-        try {
             sql+=data.getClass().getMethod(m,null).invoke(data)+"'";
+
+            sql+=" and "+field.get(1)+"='";
+            //对比第二个参数
+            f=field.get(1);
+            m=f.substring(0,1).toUpperCase()+f.substring(1);
+            m="get"+m;
+            sql+=data.getClass().getMethod(m,null).invoke(data)+"'";
+
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {

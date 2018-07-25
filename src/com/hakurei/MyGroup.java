@@ -3,15 +3,15 @@ package com.hakurei;
 import java.util.Objects;
 
 public class MyGroup {
-    private int groupNumber;
+    private String  groupNumber;
     private String groupName;
     private String user;
 
-    public int getGroupNumber() {
+    public String getGroupNumber() {
         return groupNumber;
     }
 
-    public void setGroupNumber(int groupNumber) {
+    public void setGroupNumber(String groupNumber) {
         this.groupNumber = groupNumber;
     }
 

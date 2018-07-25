@@ -1,13 +1,12 @@
 package com.hakurei;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class DeleteServlet extends HttpServlet {
+public class DeleteGroupFileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -16,16 +15,19 @@ public class DeleteServlet extends HttpServlet {
 
         // TODO Auto-generated method stub
         String fileNumber =(String) request.getParameter("fileNumber");
-        System.out.println(fileNumber);
+        String GroupNumber=(String) request.getSession().getAttribute("checkGroupId");
 
-        for (int i=0;i<DataManage.fileData.getList().size();i++)
+        for (int i=0;i<DataManage.groupFile.getList().size();i++)
         {
-            if (fileNumber.equals(DataManage.fileData.getList().get(i).getFileNo()))
+            if ((fileNumber.equals(DataManage.groupFile.getList().get(i).getGroupFileNumber()))&&(GroupNumber.equals(DataManage.groupFile.getList().get(i).getGroupId())))
             {
-                DataManage.fileData.Delete(DataManage.fileData.getList().get(i));
+
+                DataManage.groupFile.Delete(DataManage.groupFile.getList().get(i));
 
             }
         }
-        request.getRequestDispatcher("MySpace.jsp").forward(request,response);
+
+        request.getRequestDispatcher("GroupSpace.jsp").forward(request,response);
+
     }
 }

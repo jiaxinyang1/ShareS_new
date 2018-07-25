@@ -25,23 +25,23 @@ layui.use(['layer','form','table'],function () {
 
 
     table.on('tool(test)', function(obj){
-        var data = obj.data;
-        if(obj.event === 'detail'){
-            layer.msg('ID：'+ data.fileNo + ' 的查看操作');
-        } else if(obj.event === 'del'){
-            layer.confirm('真的删除行么', function(index){
-                obj.del();
-                location.href="/delete?fileNumber="+data.fileNo;
+            var data = obj.data;
+            if(obj.event === 'detail'){
+                layer.msg('ID：'+ data.fileNo + ' 的查看操作');
+            } else if(obj.event === 'del'){
+                layer.confirm('真的删除行么', function(index){
+                    obj.del();
+                    location.href="/delete?fileNumber="+data.fileNo;
 
-                layer.close(index);
-            });
-        } else if(obj.event === 'download'){
+                    layer.close(index);
+                });
+            } else if(obj.event === 'download'){
 
-            location.href="/download?fileNumber="+data.fileNo;
+                location.href="/download?fileNumber="+data.fileNo;
 
 
-            //layer.alert('编辑行：<br>'+ JSON.stringify(data))
-        }
+                //layer.alert('编辑行：<br>'+ JSON.stringify(data))
+            }
     });
 
 

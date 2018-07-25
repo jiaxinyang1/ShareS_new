@@ -107,4 +107,52 @@
         <servlet-name>searchServlet</servlet-name>
         <url-pattern>/search</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>GoTosearchServlet</servlet-name>
+        <servlet-class>com.hakurei.GoSearchPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GoTosearchServlet</servlet-name>
+        <url-pattern>/GoSearchPageServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GroupFileServlet</servlet-name>
+        <servlet-class>com.hakurei.GroupFileServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GroupFileServlet</servlet-name>
+        <url-pattern>/groupfile</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>uoLoadToGroupServlet</servlet-name>
+        <servlet-class>com.hakurei.UpLoadFileToServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>uoLoadToGroupServlet</servlet-name>
+        <url-pattern>/uploadtogroup</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>deleteGruopFileServlet</servlet-name>
+        <servlet-class>com.hakurei.DeleteGroupFileServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteGruopFileServlet</servlet-name>
+        <url-pattern>/deleteGroupFile</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ChangePassSerlvet</servlet-name>
+        <servlet-class>com.hakurei.ChangePassServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangePassSerlvet</servlet-name>
+        <url-pattern>/changePass</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ChangeNiceNameSerlvet</servlet-name>
+        <servlet-class>com.hakurei.ChangeNiceNameServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangeNiceNameSerlvet</servlet-name>
+        <url-pattern>/changeNickName</url-pattern>
+    </servlet-mapping>
 </web-app>

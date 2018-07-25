@@ -23,6 +23,7 @@ public class LoginServlet extends HttpServlet {
         String username=request.getParameter("username");
         String login;
         request.getSession().setAttribute("user", username);
+
         request.getSession().setAttribute("password", password);
         for(int i=0;i<DataManage.userData.getList().size();i++)
         {
@@ -30,6 +31,7 @@ public class LoginServlet extends HttpServlet {
             {
                 System.out.println("登陆成功");
                 login=new String("登录成功");
+                request.getSession().setAttribute("nickname",DataManage.userData.getList().get(i).getName());
                 request.setAttribute("login",login);
                 request.getRequestDispatcher(url).forward(request, response);
                 return;

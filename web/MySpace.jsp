@@ -8,6 +8,7 @@
     <script src="MySpace.js"></script>
     <script src="jquery-3.3.1.js"></script>
     <script src="upload.js"></script>
+    <script src="navigation.js"></script>
     <!--script src="../layui/index.js"></script-->
     <link rel="stylesheet" href="../layui/css/layui.css">
     <link rel="stylesheet" href="loungh_2.css">
@@ -22,7 +23,7 @@
 </script>
 <div class="layui-layout layui-layout-admin ">
     <%
-        String username=(String)session.getAttribute("user");
+        String username=(String)session.getAttribute("nickname");
     %>
 
 
@@ -44,16 +45,19 @@
                     上传<i class="layui-icon">&#xe67c;</i>
                 </button>
             </li>
+            </li>
             <li class="layui-nav-item">
-                 <a href="javascript:;">
-                     <img src="/picture/userimg.jpg" class="layui-nav-img">
-                     <%=username%>
-                   </a>
-                 <dl class="layui-nav-child">
-                   <dd><a href="">基本资料</a> </dd>
-                   <dd><a href="">安全设置</a></dd>
-                 </dl>
-               </li>
+                <a href="javascript:;">
+                    <img src="/picture/userimg.jpg" class="layui-nav-img">
+                    <%=username%>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><button id="test1" class="layui-btn" style="padding:0 55px 0 55px;margin:5px 0 10px 0">昵称修改</button>
+                    </dd>
+                    <dd><button id="test3" class="layui-btn" style="padding:0 55px 0 55px">密码修改</button>
+                    </dd>
+                </dl>
+            </li>
                <li class="layui-nav-item"><a href="/LoginOut">退出</a></li>
         </ul>
     </div>
@@ -88,12 +92,12 @@
         </div>
     </div>
     <div class="layui-anim layui-anim-fadein">
-        <div style="background: white" class="layui-main" >
+        <div class="layui-main" >
 
 
          <div class="layui-btn-group demoTable">
         </div>
-         <table lay-filter="test" id="user"  ></table>
+         <table lay-filter="test" id="user" style="background: white"  ></table>
          <script type="text/html" id="barDemo">
              <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
              <a class="layui-btn layui-btn-xs" lay-event="download">下载</a>

@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.UUID;
 
 public class CreateGroupServlet extends HttpServlet {
 
@@ -27,12 +28,14 @@ public class CreateGroupServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         MyGroup myGroup_buff = new MyGroup();
-        int number=Integer.valueOf(request.getSession().getAttribute("myGroupCount").toString())+1;
         myGroup_buff.setUser((String) request.getSession().getAttribute("user"));
         myGroup_buff.setGroupName(request.getParameter("groupname"));
-        myGroup_buff.setGroupNumber(number);
-        //更新一下数量值
-        request.getSession().setAttribute("myGroupCount",Integer.toString(number));
+
+        //生产唯一编号
+        String groupId = String.format("%07d", Math.abs(UUID.randomUUID().toString().hashCode()));
+        myGroup_buff.setGroupNumber(groupId);
+
+
 
         System.out.println(request.getParameter("groupname"));
         DataManage.myGroup.Insert(myGroup_buff);

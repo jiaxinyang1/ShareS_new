@@ -8,7 +8,7 @@ layui.use(['layer','form','table'],function () {
             ,width:400
             ,height: 450
             ,cols:[[ //标题栏
-                {field: 'groupName', title: '我加入的群组', width: 400}
+                {field: 'groupName', title: '我加入的群组', width: 400, event:'opengroupspace',style:'cursor: pointer;'}
             ]]
             ,url: '/myGroup'
             ,skin: 'line' //表格风格
@@ -60,4 +60,61 @@ layui.use(['layer','form','table'],function () {
         var othis = $(this), method = othis.data('method');
         active[method] ? active[method].call(this, othis) : '';
     });
+    table.on('tool(test1)', function(obj){
+        var data = obj.data;
+        if(obj.event === 'detail'){
+            layer.msg('ID：'+ data.fileNo + ' 的查看操作');
+        } else if(obj.event === 'del'){
+            layer.confirm('真的删除行么', function(index){
+                obj.del();
+                location.href="/deleteGroupFile?fileNumber="+data.fileNo;
+
+                layer.close(index);
+
+            });
+        } else if(obj.event === 'download'){
+
+            location.href="/download?fileNumber="+data.fileNo;
+
+
+            //layer.alert('编辑行：<br>'+ JSON.stringify(data))
+        }
+    });
+
+    table.on('tool(test2)', function(obj){
+        var data = obj.data;
+
+
+
+
+        if(obj.event === 'opengroupspace') {
+
+            table.render({
+                elem:'#table1'
+                ,width:600
+                ,height: 450
+                ,cols:[[ //标题栏
+                    {field:'fileNo',title:'文件编号',width:100}
+                    ,{field: 'fileName', title: '文件名称', width: 100, sort: true}
+                    ,{field: 'uploadTime', title: '日期', width: 100}
+                    ,{field: 'fileSize', title: '大小', minWidth: 30}
+                    ,{field: 'authority', title: '文件权限', minWidth: 30}
+                    ,{field:'operation',title:'操作',fixed: 'right', width:200, align:'center', toolbar: '#barDemo'}
+                ]]
+                ,url: '/groupfile?groupName='+data.groupName
+                ,skin: 'line' //表格风格
+                ,even: true
+            });
+
+          // document.getElementById(uploadtogroup).style.display="inline";
+
+            $('#uploadtogroup').css('display','block');
+
+
+
+
+        }
+    })
+
+
 });
